@@ -20,8 +20,6 @@ public class DatabaseMain {
     private String host;
     private String uName;
     private String pWord;
-    private Connection con;
-    private Statement state;
     private ResultSet rs;
     
     /**
@@ -37,12 +35,9 @@ public class DatabaseMain {
         pWord = aPWord;
         rs = null;
         
-        try {
-            con = DriverManager.getConnection(host, uName, pWord);
-            state = con.createStatement();
-        } catch (SQLException ex) {
-            System.out.println("Sytem error with connection");
-        }
+        System.out.println(host);
+        System.out.println(uName);
+        System.out.println(pWord);
         
     }
     
@@ -51,14 +46,20 @@ public class DatabaseMain {
         String[] user = new String[5];
         
         try {
+            // Cereate connection 
+            Connection con = DriverManager.getConnection(host, uName, pWord);
+            Statement state = con.createStatement();
+            
+            try {
+            
             rs = state.executeQuery( aSQL );
+            
             rs.next( );
             
             String userID = rs.getString("USERID");
             String password = rs.getString("PASSWORD");
             String firstName = rs.getString("FIRSTNAME");
             String lastName = rs.getString("LASTNAME");
-            
             boolean admin = rs.getBoolean("Admin");
             String isAdmin = "false";
             
@@ -66,7 +67,6 @@ public class DatabaseMain {
             {
                 isAdmin = "true";
             }
-            
             user[0] = userID;
             user[1] = password;
             user[2] = firstName;
@@ -77,6 +77,10 @@ public class DatabaseMain {
             System.out.println("System Error with SQL");
             user[0] = "Error";
             
+        }
+            
+        } catch (SQLException ex) {
+            System.out.println("Sytem error with connection");
         }
         
         return user;
