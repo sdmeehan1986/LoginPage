@@ -48,7 +48,7 @@ public class DatabaseMain {
     
     public String[] resultSet(String aSQL)
     {
-        String[] user = new String[4];
+        String[] user = new String[5];
         
         try {
             rs = state.executeQuery( aSQL );
@@ -59,10 +59,19 @@ public class DatabaseMain {
             String firstName = rs.getString("FIRSTNAME");
             String lastName = rs.getString("LASTNAME");
             
+            boolean admin = rs.getBoolean("Admin");
+            String isAdmin = "false";
+            
+            if(admin)
+            {
+                isAdmin = "true";
+            }
+            
             user[0] = userID;
             user[1] = password;
             user[2] = firstName;
             user[3] = lastName;
+            user[4] = isAdmin;
             
         } catch (SQLException ex) {
             System.out.println("System Error with SQL");
