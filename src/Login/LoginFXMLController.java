@@ -7,6 +7,7 @@ package Login;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
@@ -16,7 +17,14 @@ import javafx.fxml.Initializable;
  */
 public class LoginFXMLController implements Initializable {
     
-    
+    /**
+     * System exit called on cancel button
+     */
+    @FXML
+    public void cancelBTN()
+    {
+        System.exit(0);
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
