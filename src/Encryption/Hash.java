@@ -20,6 +20,11 @@ public class Hash {
         
     }
     
+    /**
+     * Creates a password hash from a string
+     * @param password
+     * @return Hashed password as a string
+     */
     public String passwordHash(String password)
     {
         String encrypted = BCrypt.hashpw(password, BCrypt.gensalt(12));
