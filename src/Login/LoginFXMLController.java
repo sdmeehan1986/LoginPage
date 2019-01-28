@@ -5,6 +5,8 @@
  */
 package Login;
 
+import Database.Login;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -42,7 +44,22 @@ public class LoginFXMLController implements Initializable {
     @FXML
     public void signInBTN()
     {
-        // TODO Add functionality to check user is valid
+        Login log = new Login();
+        String[] user = log.checkUser(username.getText(), password.getText());
+        
+        if(user[0].equals("Valid"))
+        {
+            System.out.println("Valid user");
+        }
+        else if(user[0].equals("Invalid password"))
+        {
+            System.out.println("Invalid Password");
+        }
+        else if(user[0].equals("Invalid Username"))
+        {
+            System.out.println("Invalid Username");
+        }
+        
     }
     
     @Override
