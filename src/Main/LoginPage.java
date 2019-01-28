@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 /**
  *
  * @author stefan meehan
+ * @version 1.0
  */
 public class LoginPage extends Application {
     
