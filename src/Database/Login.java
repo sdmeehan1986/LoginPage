@@ -31,8 +31,9 @@ public class Login extends DatabaseMain{
      * @param password
      * @return 
      */
-    public String checkUser(String userName, String password)
+    public String[] checkUser(String userName, String password)
     {
+        String[] auth = new String[3];
         String sql = "SELECT * FROM UserLogin WHERE USERNAME = " + "'" + userName + "'";
         
         String[] user = resultSet(sql);
@@ -44,17 +45,22 @@ public class Login extends DatabaseMain{
             
             if(user[1].equals(pwToCheck))
             {
-                return user[2] + " " + user[3];
+                auth[0] = "Valid";
+                auth[1] = user[2];
+                auth[2] = user[4];
+                return auth;
             }
             else
             {
-                return "Invalid password";
+                auth[0] = "Invalid password";
+                return auth;
             }
             
         }
         else
         {
-            return "Invalid Username";
+            auth[0] = "Invalid Username";
+            return auth;
         }
     }
     
