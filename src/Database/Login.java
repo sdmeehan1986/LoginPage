@@ -34,16 +34,17 @@ public class Login extends DatabaseMain{
     public String[] checkUser(String userName, String password)
     {
         String[] auth = new String[3];
-        String sql = "SELECT * FROM UserLogin WHERE USERNAME = " + "'" + userName + "'";
+        String sql = "SELECT * FROM UserLogin WHERE USERID = " + "'" + userName + "'";
         
         String[] user = resultSet(sql);
         
         if(!(user[0].equals("Error")))
         {
             Hash hash = new Hash();
-            String pwToCheck = hash.passwordHash(password);
             
-            if(user[1].equals(pwToCheck))
+            boolean match = hash.checkPassword(password, user[1]);
+
+            if(match)
             {
                 auth[0] = "Valid";
                 auth[1] = user[2];
