@@ -21,6 +21,8 @@ public class DatabaseMain {
     private String uName;
     private String pWord;
     private ResultSet rs;
+    private Connection con;
+    private Statement state;
     
     /**
      * Constructor to create database connection variables
@@ -35,9 +37,14 @@ public class DatabaseMain {
         pWord = aPWord;
         rs = null;
         
-        System.out.println(host);
-        System.out.println(uName);
-        System.out.println(pWord);
+        try {
+            // Cereate connection 
+            con = DriverManager.getConnection(host, uName, pWord);
+            state = con.createStatement();
+
+        } catch (SQLException ex) {
+            System.out.println("Sytem error with connection");
+        }
         
     }
     
@@ -45,12 +52,8 @@ public class DatabaseMain {
     {
         String[] user = new String[5];
         
+        
         try {
-            // Cereate connection 
-            Connection con = DriverManager.getConnection(host, uName, pWord);
-            Statement state = con.createStatement();
-            
-            try {
             
             rs = state.executeQuery( aSQL );
             
@@ -77,10 +80,6 @@ public class DatabaseMain {
             System.out.println("System Error with SQL");
             user[0] = "Error";
             
-        }
-            
-        } catch (SQLException ex) {
-            System.out.println("Sytem error with connection");
         }
         
         return user;
