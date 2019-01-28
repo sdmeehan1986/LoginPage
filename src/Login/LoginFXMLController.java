@@ -42,8 +42,7 @@ public class LoginFXMLController implements Initializable {
     @FXML
     public void signInBTN()
     {
-        System.out.println(username.getText());
-        System.out.println(password.getText());
+        // TODO Add functionality to check user is valid
     }
     
     @Override
