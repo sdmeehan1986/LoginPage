@@ -44,6 +44,11 @@ public class LoginFXMLController implements Initializable {
     @FXML
     public void signInBTN()
     {
+        if(!(invalid.getText().equals("")))
+        {
+            invalid.setText("");
+        }
+        
         Login log = new Login();
         String[] user = log.checkUser(username.getText(), password.getText());
         
@@ -53,11 +58,11 @@ public class LoginFXMLController implements Initializable {
         }
         else if(user[0].equals("Invalid password"))
         {
-            System.out.println("Invalid Password");
+            invalid.setText("Invalid Password");
         }
         else if(user[0].equals("Invalid Username"))
         {
-            System.out.println("Invalid Username");
+            invalid.setText("Invalid User Name");
         }
         
     }
