@@ -29,7 +29,7 @@ public class Login extends DatabaseMain{
      * Checks username and password against database
      * @param userName
      * @param password
-     * @return 
+     * @return String array for valid/invalid user
      */
     public String[] checkUser(String userName, String password)
     {
