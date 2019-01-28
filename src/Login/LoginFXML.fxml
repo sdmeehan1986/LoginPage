@@ -9,32 +9,37 @@
 
 <AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="600.0" style="-fx-background-color: #31b3f9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Login.LoginFXMLController">
    <children>
-      <Button layoutX="344.0" layoutY="234.0" mnemonicParsing="false" text="Sign In">
+      <Button layoutX="344.0" layoutY="218.0" mnemonicParsing="false" onAction="#signInBTN" text="Sign In">
          <font>
             <Font name="Arial" size="18.0" />
          </font>
       </Button>
-      <Label alignment="CENTER_RIGHT" layoutX="126.0" layoutY="124.0" minHeight="31.0" minWidth="100.0" text="User Name:" textAlignment="RIGHT">
+      <Label alignment="CENTER_RIGHT" layoutX="126.0" layoutY="109.0" minHeight="31.0" minWidth="100.0" text="User Name:" textAlignment="RIGHT">
          <font>
             <Font name="Arial" size="18.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="126.0" layoutY="176.0" minHeight="31.0" minWidth="100.0" text="Password:" textAlignment="RIGHT">
+      <Label alignment="CENTER_RIGHT" layoutX="126.0" layoutY="161.0" minHeight="31.0" minWidth="100.0" text="Password:" textAlignment="RIGHT">
          <font>
             <Font name="Arial" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="157.0" layoutY="41.0" text="Stocker 2.0">
+      <Label layoutX="157.0" layoutY="28.0" text="Stocker 2.0">
          <font>
             <Font name="Broadway" size="48.0" />
          </font>
       </Label>
-      <TextField layoutX="238.0" layoutY="124.0" />
-      <Button layoutX="238.0" layoutY="234.0" mnemonicParsing="false" onAction="#cancelBTN" text="Cancel">
+      <TextField fx:id="username" layoutX="238.0" layoutY="109.0" />
+      <Button layoutX="238.0" layoutY="218.0" mnemonicParsing="false" onAction="#cancelBTN" text="Cancel">
          <font>
             <Font name="Arial" size="18.0" />
          </font>
       </Button>
-      <PasswordField layoutX="238.0" layoutY="176.0" />
+      <PasswordField fx:id="password" layoutX="238.0" layoutY="161.0" />
+      <Label fx:id="invalid" layoutX="302.0" layoutY="265.0" textFill="#fc0000">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

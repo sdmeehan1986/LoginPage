@@ -9,6 +9,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 /**
  *
@@ -17,6 +20,13 @@ import javafx.fxml.Initializable;
  */
 public class LoginFXMLController implements Initializable {
     
+    @FXML 
+    private Label invalid;
+    @FXML 
+    private TextField username;
+    @FXML 
+    private PasswordField password;
+    
     /**
      * System exit called on cancel button
      */
@@ -24,6 +34,16 @@ public class LoginFXMLController implements Initializable {
     public void cancelBTN()
     {
         System.exit(0);
+    }
+    
+    /**
+     * Sign in button 
+     */
+    @FXML
+    public void signInBTN()
+    {
+        System.out.println(username.getText());
+        System.out.println(password.getText());
     }
     
     @Override
