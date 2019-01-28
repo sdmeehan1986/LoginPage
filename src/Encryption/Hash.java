@@ -32,4 +32,17 @@ public class Hash {
         return encrypted;
     }
     
+    /**
+     * Check password's match
+     * @param password
+     * @param hash
+     * @return 
+     */
+    public boolean checkPassword(String password, String hash)
+    {
+        boolean match = BCrypt.checkpw(password, hash);
+        
+        return match;
+    }
+    
 }
