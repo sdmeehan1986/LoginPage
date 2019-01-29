@@ -6,6 +6,7 @@
 package Login;
 
 import Database.Login;
+import Main.Main;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,6 +15,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  *
@@ -28,6 +31,8 @@ public class LoginFXMLController implements Initializable {
     private TextField username;
     @FXML 
     private PasswordField password;
+    @FXML
+    private AnchorPane ap;
     
     /**
      * System exit called on cancel button
@@ -55,6 +60,14 @@ public class LoginFXMLController implements Initializable {
         if(user[0].equals("Valid"))
         {
             System.out.println("Valid user");
+            Main main = new Main();
+            Stage stage = (Stage) invalid.getScene().getWindow();
+            try {
+                main.start(new Stage());
+                stage.close();
+            } catch (Exception ex) {
+                System.out.println("System error");
+            }
         }
         else if(user[0].equals("Invalid password"))
         {
