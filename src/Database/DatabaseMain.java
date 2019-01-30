@@ -5,6 +5,7 @@
  */
 package Database;
 
+import Warning.ErrorDialog;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.DriverManager;
@@ -43,7 +44,10 @@ public class DatabaseMain {
             state = con.createStatement();
 
         } catch (SQLException ex) {
-            System.out.println("Sytem error with connection");
+            String head = "An error has occurred connecting to the database!";
+            String type = "Unable to start database connection.";
+            ErrorDialog warn = new ErrorDialog(head, type,  ex);
+            warn.warning();
         }
         
     }
@@ -55,7 +59,7 @@ public class DatabaseMain {
         
         try {
             
-            rs = state.executeQuery( aSQL );
+            rs = state.executeQuery(aSQL);
             
             rs.next( );
             
@@ -77,7 +81,10 @@ public class DatabaseMain {
             user[4] = isAdmin;
             
         } catch (SQLException ex) {
-            System.out.println("System Error with SQL");
+            String head = "An error has occurred getting data from the database!";
+            String type = "Unable to run SQL command.";
+            ErrorDialog warn = new ErrorDialog(head, type,  ex);
+            warn.warning();
             user[0] = "Error";
             
         }
