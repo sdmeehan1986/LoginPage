@@ -83,24 +83,22 @@ public class LoginFXMLController implements Initializable {
         Login log = new Login();
         String[] user = log.checkUser(username.getText(), password.getText());
         
-        if(user[0].equals("Valid"))
-        {
-            MainFXMLController main = new MainFXMLController();
-            Stage stage = (Stage) invalid.getScene().getWindow();
-            try {
-                main.startMain(user[1], user[2]);
-                stage.close();
-            } catch (Exception ex) {
-                System.out.println("System error");
-            }
-        }
-        else if(user[0].equals("Invalid password"))
-        {
-            invalid.setText("Invalid Password");
-        }
-        else if(user[0].equals("Invalid Username"))
-        {
-            invalid.setText("Invalid User Name");
+        switch (user[0]) {
+            case "Valid":
+                MainFXMLController main = new MainFXMLController();
+                Stage stage = (Stage) invalid.getScene().getWindow();
+                try {
+                    main.startMain(user[1], user[2]);
+                    stage.close();
+                } catch (Exception ex) {
+                    System.out.println("System error");
+                }   break;
+            case "Invalid password":
+                invalid.setText("Invalid Password");
+                break;
+            case "Invalid Username":
+                invalid.setText("Invalid User Name");
+                break;
         }
         
     }
