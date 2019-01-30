@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 public class MainFXMLController implements Initializable {
     
     private static String user;
-    private boolean isAdmin;
+    private static boolean isAdmin;
     @FXML
     private Label welcome;
     
@@ -45,14 +45,7 @@ public class MainFXMLController implements Initializable {
             warn.warning();
         }   
 
-        if(admin.equals("true"))
-        {
-            isAdmin = true;
-        }
-        else
-        {
-            isAdmin = false;
-        }
+        isAdmin = admin.equals("true");
     }
     
     /**
