@@ -5,6 +5,7 @@
  */
 package Main;
 
+import Warning.ErrorDialog;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -38,7 +39,10 @@ public class MainFXMLController implements Initializable {
         try {
             main.start(new Stage());
         } catch (Exception ex) {
-            System.out.println("Error starting main");
+            String head = "An error has occurred loggin in!";
+            String type = "Unable to start main application.";
+            ErrorDialog warn = new ErrorDialog(head, type,  ex);
+            warn.warning();
         }   
 
         if(admin.equals("true"))
@@ -62,7 +66,6 @@ public class MainFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        System.out.println(user);
         setLabel();
     }    
     
