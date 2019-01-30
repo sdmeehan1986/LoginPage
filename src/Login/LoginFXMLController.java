@@ -33,8 +33,6 @@ public class LoginFXMLController implements Initializable {
     private TextField username;
     @FXML 
     private PasswordField password;
-    @FXML
-    private AnchorPane ap;
     
     /**
      * Call cancelBTN on enter key pressed
