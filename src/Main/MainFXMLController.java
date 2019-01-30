@@ -7,7 +7,9 @@ package Main;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 /**
@@ -17,8 +19,10 @@ import javafx.stage.Stage;
  */
 public class MainFXMLController implements Initializable {
     
-    private String user;
+    private static String user;
     private boolean isAdmin;
+    @FXML
+    private Label welcome;
     
     /**
      * Starts the main app and assigns username and admin variables
@@ -26,16 +30,17 @@ public class MainFXMLController implements Initializable {
      * @param admin 
      */
     public void startMain(String uName, String admin)
-    {
+    {        
+        String[] parts = uName.split(" ", 2);
+        user = parts[0];
+        
         Main main = new Main();
         try {
             main.start(new Stage());
         } catch (Exception ex) {
             System.out.println("Error starting main");
         }   
-        
-        String[] parts = uName.split(" ", 2);
-        user = parts[0];
+
         if(admin.equals("true"))
         {
             isAdmin = true;
@@ -46,9 +51,19 @@ public class MainFXMLController implements Initializable {
         }
     }
     
+    /**
+     * Sets the welcome message with the users name
+     */
+    public void setLabel()
+    {
+        welcome.setText("Welcome " + user);
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        System.out.println(user);
+        setLabel();
     }    
     
 }
