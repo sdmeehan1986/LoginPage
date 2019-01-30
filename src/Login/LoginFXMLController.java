@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import Warning.ErrorDialog;
 
 /**
  *
@@ -91,7 +92,10 @@ public class LoginFXMLController implements Initializable {
                     main.startMain(user[1], user[2]);
                     stage.close();
                 } catch (Exception ex) {
-                    System.out.println("System error");
+                    String head = "An error has occurred loggin in!";
+                    String type = "Unable to start main application.";
+                    ErrorDialog warn = new ErrorDialog(head, type,  ex);
+                    warn.warning();
                 }   break;
             case "Invalid password":
                 invalid.setText("Invalid Password");
