@@ -7,24 +7,43 @@ package Main;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 /**
  *
  * @author stefan meehan
+ * @version 1.0
  */
 public class MainFXMLController implements Initializable {
     
-    @FXML
-    private Label label;
+    private String user;
+    private boolean isAdmin;
     
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+    /**
+     * Starts the main app and assigns username and admin variables
+     * @param uName
+     * @param admin 
+     */
+    public void startMain(String uName, String admin)
+    {
+        Main main = new Main();
+        try {
+            main.start(new Stage());
+        } catch (Exception ex) {
+            System.out.println("Error starting main");
+        }   
+        
+        String[] parts = uName.split(" ", 2);
+        user = parts[0];
+        if(admin.equals("true"))
+        {
+            isAdmin = true;
+        }
+        else
+        {
+            isAdmin = false;
+        }
     }
     
     @Override
