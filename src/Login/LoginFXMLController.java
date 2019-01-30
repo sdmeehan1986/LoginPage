@@ -15,6 +15,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -35,6 +37,32 @@ public class LoginFXMLController implements Initializable {
     private AnchorPane ap;
     
     /**
+     * Call cancelBTN on enter key pressed
+     * @param event 
+     */
+    @FXML 
+    public void cancelKeyPressed(KeyEvent event)
+    {
+         if (event.getCode().equals(KeyCode.ENTER))
+            {
+                cancelBTN();
+            }
+    }
+    
+    /**
+     * Call signInBTN on enter key pressed
+     * @param event 
+     */
+    @FXML 
+    public void signInKeyPressed(KeyEvent event)
+    {
+         if (event.getCode().equals(KeyCode.ENTER))
+            {
+                signInBTN();
+            }
+    }
+    
+    /**
      * System exit called on cancel button
      */
     @FXML
@@ -44,7 +72,9 @@ public class LoginFXMLController implements Initializable {
     }
     
     /**
-     * Sign in button 
+     * Sign in button to check if username and password
+     * is valid and signs in, else updates label to 
+     * inform user of error
      */
     @FXML
     public void signInBTN()
@@ -59,7 +89,6 @@ public class LoginFXMLController implements Initializable {
         
         if(user[0].equals("Valid"))
         {
-            System.out.println("Valid user");
             Main main = new Main();
             Stage stage = (Stage) invalid.getScene().getWindow();
             try {
