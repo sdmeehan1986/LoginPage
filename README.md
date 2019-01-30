@@ -30,10 +30,10 @@ for submitting pull requests.
 
 2. Reference the issue numbers in the commit message if it resolves an open issue. Follow the pattern Fixes #
 
-3 .Do not make PR which is not related to any issues. You can create an issue and solve it once we approve them.
+3. Do not make PR which is not related to any issues. You can create an issue and solve it once we approve them.
 
-4 .Avoid duplicate PRs, if need be comment on the older PR with the PR number of the follow-up (new PR) and close the obsolete PR yourself.
+4. Avoid duplicate PRs, if need be comment on the older PR with the PR number of the follow-up (new PR) and close the obsolete PR yourself.
 
-5 .Be polite to other community members.
+5. Be polite to other community members.
 
 6. Be patient while PRs are being reviewed and approved/rejected.
